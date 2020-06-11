@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyComponent should render correctly in "debug" mode 1`] = `
-<h1>
-  123 Hola Hello from 
-  hoa
-   and 
-  frameworlk
-  !
-</h1>
+<Hello
+  compiler="hoa"
+  framework="frameworlk"
+>
+  <h1>
+    123 Hola Hello from 
+    hoa
+     and 
+    frameworlk
+    !
+  </h1>
+</Hello>
 `;

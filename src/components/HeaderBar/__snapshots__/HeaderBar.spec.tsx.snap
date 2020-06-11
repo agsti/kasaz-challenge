@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderBar should render correctly 1`] = `
+<header
+  className="Header"
+>
+  <span
+    className="header-item"
+  >
+    <svgrLoader
+      fill="#41af68"
+    />
+  </span>
+  <span
+    className="header-item"
+  >
+    <svgrLoader
+      className="kasaz-logo"
+    />
+  </span>
+  <div
+    className="header-item"
+  />
+</header>
+`;

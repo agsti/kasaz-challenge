@@ -1,0 +1,16 @@
+.Header {
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-item {
+    margin-left: 10px;
+    color: white;
+}
+
+.kasaz-logo {
+    height: 40px;
+}
+
