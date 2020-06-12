@@ -8,7 +8,8 @@ import "./SearchBar.css";
 export default function SearchBar(){
     return (
         <div className="search-container">
-            <SearchBox />
+            <SearchBox 
+        />
         <div className="filter-btn">
                 Filtros
             <img className="filter-icon" src={ArrowIcon} />
