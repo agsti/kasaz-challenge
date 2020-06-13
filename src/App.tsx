@@ -1,5 +1,5 @@
-import React, { Component} from "react";
-import {useSelector} from "react-redux";
+import React from "react";
+import {useSelector, useDispatch} from "react-redux";
 import { hot } from "react-hot-loader/root";
 
 import HeaderBar from "./components/HeaderBar";
@@ -8,6 +8,8 @@ import FilterView from "./components/FilterView";
 import ListingsList from "./components/ListingsList";
 
 import {SelectMenuState} from "./redux/Menus/selectors";
+import {ToggleFilterMenu} from "./redux/Menus/actions";
+
 import "./App.css";
 import 'reset-css';
 
@@ -23,12 +25,15 @@ const l = {
 
 const App = () => {
     const menuState = useSelector(SelectMenuState)    
+    const dispatch = useDispatch();
     console.log(menuState)
     return(
         <div className="App">
             <HeaderBar />
-            <SearchBar />
-        { menuState.showFilterMenu && <FilterView 
+            <SearchBar
+        />
+        { 
+            menuState.showFilterMenu && <FilterView 
                 nRooms={["1+", "2+", "3+", "4+", "5+"]}
                 prices={["1","2","3","4"]}
                 propSizes={["30", "40", "50"]}

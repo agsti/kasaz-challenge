@@ -1,19 +1,24 @@
 import React from "react";
-import SearchBox from "./SearchBox";
-
-import ArrowIcon from "./icons/arrow-icon.svg";
-
-import "./SearchBar.css";
+import SearchBarView from "./SearchBarView";
+import {useSelector, useDispatch} from "react-redux";
+import {SelectMenuState} from "../../redux/Menus/selectors";
+import {SetCity} from "../../redux/Filters/actions";
+import {ToggleFilterMenu} from "../../redux/Menus/actions";
 
 
 export default function SearchBar() {
+    const menuState = useSelector(SelectMenuState);
+    const dispatch = useDispatch();
+
     return (
-        <div className="search-container">
-            <SearchBox  />
-            <div className="filter-btn">
-                    Filtros
-                <img className="filter-icon" src={ArrowIcon} />
-            </div>
-        </div>
+        <SearchBarView
+            onSearch={search => {
+                dispatch(SetCity(search))
+            }}
+            onFilterButtonClicked={ () =>{
+                dispatch(ToggleFilterMenu())
+            }}
+            filterMenushown={menuState.showFilterMenu}
+    />
     )
 }
