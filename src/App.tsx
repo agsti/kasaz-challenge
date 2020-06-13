@@ -1,10 +1,13 @@
 import React, { Component} from "react";
+import {useSelector} from "react-redux";
 import { hot } from "react-hot-loader/root";
+
 import HeaderBar from "./components/HeaderBar";
 import SearchBar from "./components/SearchBar";
-//import FilterView from "./components/FilterView";
+import FilterView from "./components/FilterView";
 import ListingsList from "./components/ListingsList";
 
+import {SelectMenuState} from "./redux/Menus/selectors";
 import "./App.css";
 import 'reset-css';
 
@@ -17,19 +20,20 @@ const l = {
     nBath: 1,
     picture: "https://dywf8esi8sang.cloudfront.net/pictures/028b300f1420101c1af71fde6e0fa7f4_large.jpg"
 }
-class App extends Component{
-  render(){
+
+const App = () => {
+    const menuState = useSelector(SelectMenuState)    
+    console.log(menuState)
     return(
         <div className="App">
             <HeaderBar />
             <SearchBar />
-{ /*
-            <FilterView 
+        { menuState.showFilterMenu && <FilterView 
                 nRooms={["1+", "2+", "3+", "4+", "5+"]}
                 prices={["1","2","3","4"]}
                 propSizes={["30", "40", "50"]}
              />
-*/}
+        }
 			<ListingsList
 				listings = {[l, l, l]}
 				/>
@@ -37,7 +41,6 @@ class App extends Component{
 
         </div>
     );
-  }
 }
 
 export default hot(App);
