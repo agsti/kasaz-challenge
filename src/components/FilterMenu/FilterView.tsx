@@ -7,7 +7,10 @@ export type Callback = (value: number) => void;
 type FilterViewProps = {
     prices: OptionsValue[], 
     sizes: OptionsValue[], 
-    nRooms: OptionsValue[],
+	nRooms: OptionsValue[],
+
+	onClickSeeListings: ()=>void,
+	filtersOutOfSync: boolean,
 	callbacks: {
 		minPrice: Callback, 
 		maxPrice: Callback,
@@ -25,9 +28,16 @@ type FilterViewProps = {
 	}
 }
 
-
 export default function FilterView(props: FilterViewProps) {
-    const {prices, sizes, nRooms, callbacks, filterValues} = props;
+    const {
+		prices,
+		sizes,
+		nRooms,
+		callbacks,
+		filterValues,
+		onClickSeeListings,
+		filtersOutOfSync
+	} = props;
 	const {
 		minPrice,
 		maxPrice,
@@ -105,7 +115,7 @@ export default function FilterView(props: FilterViewProps) {
                         ))
                     }
                 </ol>
-			<div className="see-listings">
+			<div className={filtersOutOfSync?"see-listings":"see-listings disabled"} onClick={onClickSeeListings}>
 				VER INMUEBLES
 			</div>
         </div>

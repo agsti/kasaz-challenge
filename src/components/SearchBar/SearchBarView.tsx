@@ -7,22 +7,33 @@ import "./SearchBar.css";
 
 type SearchBarProps = {
     onSearch: (arg0: string) => void,
+    searchValue: string,
+    setSearchValue: (arg0: string) => void,
+    searchHasChanged: boolean,
     onFilterButtonClicked: ()=>void,
-    filterMenushown: boolean
+    filterArrowLookingUp: boolean
 }
 export default function SearchBarView(props:SearchBarProps) {
-    const {onSearch, onFilterButtonClicked, filterMenushown} = props
-    const [searchValue, setSearchValue] = useState("");
+    const {
+        onSearch,
+        setSearchValue, 
+        searchValue,
+        searchHasChanged,
+        onFilterButtonClicked, 
+        filterArrowLookingUp
+    } = props
+
     return (
         <div className="search-container">
             <SearchBox
                 onChange={(e) => {setSearchValue(e.target.value)}}
                 value={searchValue}
                 onSearch={onSearch}
+                showSearchButton={searchHasChanged}
             />
             <div className="filter-btn" onClick={()=> onFilterButtonClicked()}>
                 Filtros
-                <img className={filterMenushown? "filter-icon filter-menu-shown" : "filter-icon"} src={ArrowIcon} />
+                <img className={filterArrowLookingUp? "filter-icon filter-menu-shown" : "filter-icon"} src={ArrowIcon} />
             </div>
         </div>
     )

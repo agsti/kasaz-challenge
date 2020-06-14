@@ -4,7 +4,8 @@ import {
     SET_MIN_ROOMS,
     SET_MAX_SIZE,
     SET_MIN_SIZE,
-    SET_MAX_PRICE
+    SET_MAX_PRICE,
+    SET_FILTERS_OUT_OF_SYNC
 } from "./actionTypes"
 
 
@@ -15,6 +16,7 @@ export const FiltersInitialState = {
     maxSize : 0 as number,
     minRooms : 0 as number,
     city : "Barcelona" as string,
+    outOfSync : false as boolean,
 }
 
 type FilterStateType = typeof FiltersInitialState;
@@ -45,6 +47,10 @@ export const FiltersReducer =  (state:FilterStateType = FiltersInitialState, act
         case SET_CITY:
             return Object.assign({}, state, {
                 city: action.payload
+            })
+        case SET_FILTERS_OUT_OF_SYNC:
+            return Object.assign({}, state, {
+                outOfSync: action.payload
             })
         default:
             return state;

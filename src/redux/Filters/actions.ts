@@ -25,7 +25,12 @@ export const SetMinRooms = (minRooms: number) => ({
     payload: minRooms
 })
 
-export const SetCity = (cityName: number) => ({
+export const SetCity = (cityName: string) => ({
     type: AT.SET_CITY,
     payload: cityName
+})
+
+export const SetFilterOufOfSync = (outOfSync: boolean) => ({
+    type: AT.SET_FILTERS_OUT_OF_SYNC,
+    payload: outOfSync
 })

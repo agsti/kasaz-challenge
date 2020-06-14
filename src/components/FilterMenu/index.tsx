@@ -1,8 +1,11 @@
 import React from "react";
 import FilterMenuView, {OptionsValue} from "./FilterView";
 import { useSelector, useDispatch } from "react-redux";
+
 import { SelectFilterState } from "../../redux/Filters/selectors";
 import * as FilterActions from "../../redux/Filters/actions";
+
+import {ToggleFilterMenu} from "../../redux/Menus/actions";
 
 const MapValueToOptions = (sufix:string, overrides?:{ [key:number]:string; }) => 
             (v:number ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v]:`${v}${sufix}`})
@@ -58,27 +61,40 @@ export default function FilterMenu(){
     let callbacks = {
         minPrice: (v : number) =>{
             dispatch(FilterActions.SetMinPrice(v))
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
         }, 
 		maxPrice: (v : number) =>{
             dispatch(FilterActions.SetMaxPrice(v))
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
         },
 		minSizeSqm: (v : number) =>{
             dispatch(FilterActions.SetMinSize(v))
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
         },
 		maxSizeSqm: (v : number) =>{
             dispatch(FilterActions.SetMaxSize(v))
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
         },
 		minRooms: (v : number) =>{
             dispatch(FilterActions.SetMinRooms(v))
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
         },
+    }
+
+    const onClickSeeListings = () => {
+        console.log(filterData)
+        dispatch(FilterActions.SetFilterOufOfSync(false))
+        dispatch(ToggleFilterMenu())
     }
 
     return <FilterMenuView
         prices={FilterPrices}
         nRooms={FilterNRooms}
         sizes={FilterSizes}
+        filtersOutOfSync={filterData.outOfSync}
         filterValues={filterValues}
         callbacks={callbacks}
+        onClickSeeListings={onClickSeeListings}
    />
 
 }
