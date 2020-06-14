@@ -5,12 +5,13 @@ import "./FilterView.css";
 export type OptionsValue = {value: number, label: string};
 export type Callback = (value: number) => void;
 type FilterViewProps = {
+	visible: boolean,
     prices: OptionsValue[], 
     sizes: OptionsValue[], 
 	nRooms: OptionsValue[],
 
 	onClickSeeListings: ()=>void,
-	filtersOutOfSync: boolean,
+	enableSeeListings: boolean,
 	callbacks: {
 		minPrice: Callback, 
 		maxPrice: Callback,
@@ -30,23 +31,30 @@ type FilterViewProps = {
 
 export default function FilterView(props: FilterViewProps) {
     const {
+		visible,
 		prices,
 		sizes,
 		nRooms,
 		callbacks,
 		filterValues,
 		onClickSeeListings,
-		filtersOutOfSync
+		enableSeeListings
 	} = props;
+
 	const {
 		minPrice,
 		maxPrice,
 		minSizeSqm,
 		maxSizeSqm,
 		minRooms
-    } = filterValues;
+	} = filterValues;
+	
+	const onSeeListingsClickHandler = ()=> {
+		enableSeeListings && onClickSeeListings()
+	}
+
     return (
-        <div className="filter-view-container">
+        <div className={visible?"filter-view-container" : "filter-view-container hidden"}>
             <div className="filter-row">
                 <div className="filter-title">
                     PRECIO
@@ -115,7 +123,7 @@ export default function FilterView(props: FilterViewProps) {
                         ))
                     }
                 </ol>
-			<div className={filtersOutOfSync?"see-listings":"see-listings disabled"} onClick={onClickSeeListings}>
+			<div className={enableSeeListings?"see-listings":"see-listings disabled"} onClick={onSeeListingsClickHandler}>
 				VER INMUEBLES
 			</div>
         </div>

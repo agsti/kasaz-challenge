@@ -7,7 +7,6 @@ import SearchBar from "./components/SearchBar";
 import FilterView from "./components/FilterMenu";
 import ListingsList from "./components/ListingsList";
 
-import {SelectMenuState} from "./redux/Menus/selectors";
 import { SelectListingsState } from "./redux/Listings/selectors";
 
 import "./App.css";
@@ -15,21 +14,18 @@ import 'reset-css';
 
 
 const App = () => {
-    const menuState = useSelector(SelectMenuState)    
     const listingsState = useSelector(SelectListingsState)    
 
     return(
         <div className="App">
             <HeaderBar />
             <SearchBar />
-        { 
-            menuState.showFilterMenu && <FilterView 
-             />
-        }
-			<ListingsList
-				listings = {listingsState.listings}
-				/>
-	
+            <div className="main-container">
+               <FilterView />
+                <ListingsList
+                    listings = {listingsState.listings}
+                />
+	        </div>
 
         </div>
     );

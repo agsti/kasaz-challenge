@@ -6,6 +6,7 @@ import { SelectFilterState } from "../../redux/Filters/selectors";
 import * as FilterActions from "../../redux/Filters/actions";
 
 import {ToggleFilterMenu} from "../../redux/Menus/actions";
+import {SelectMenuState} from "../../redux/Menus/selectors";
 
 const MapValueToOptions = (sufix:string, overrides?:{ [key:number]:string; }) => 
             (v:number ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v]:`${v}${sufix}`})
@@ -47,6 +48,7 @@ const FilterSizes = [
 
 export default function FilterMenu(){
     const filterData = useSelector(SelectFilterState);
+    const menuData = useSelector(SelectMenuState);
     const dispatch = useDispatch();
 
     let filterValues= {
@@ -88,10 +90,11 @@ export default function FilterMenu(){
     }
 
     return <FilterMenuView
+        visible={menuData.showFilterMenu}
         prices={FilterPrices}
         nRooms={FilterNRooms}
         sizes={FilterSizes}
-        filtersOutOfSync={filterData.outOfSync}
+        enableSeeListings={filterData.outOfSync}
         filterValues={filterValues}
         callbacks={callbacks}
         onClickSeeListings={onClickSeeListings}
