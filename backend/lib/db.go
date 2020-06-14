@@ -1,0 +1,53 @@
+package lib
+
+import (
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
+)
+
+type Database struct {
+    db *gorm.DB
+}
+
+func NewDatabaseConnection() (*Database,error) {
+	db, err := gorm.Open("sqlite3", "test.db")
+	return &Database{db}, err
+}
+
+func (d *Database) Init() {
+	d.db.AutoMigrate(&Listing{})
+}
+
+func (d *Database) Store(l *Listing) {
+    d.db.Create(l)
+}
+
+func (d *Database) ListAll() []Listing {
+    var ret []Listing
+    d.db.Find(&ret)
+    return ret
+}
+
+func (d *Database) Filter(minPrice, maxPrice, minArea, maxArea, minRooms *int)  []Listing{
+    tx := d.db
+    if minPrice != nil {
+        tx = tx.Where("price > ?", minPrice)
+    }
+    if maxPrice != nil {
+        tx = tx.Where("price < ?", maxPrice)
+    }
+    if minArea != nil {
+        tx = tx.Where("area_sqm > ?", minArea)
+    }
+    if maxArea != nil {
+        tx = tx.Where("area_sqm < ?", maxArea)
+    }
+    if minRooms != nil {
+        tx = tx.Where("n_rooms > ?", minRooms)
+    }
+
+    var ret []Listing
+    tx.Find(&ret)
+    return ret
+}
+
