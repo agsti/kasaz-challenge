@@ -1,0 +1,2 @@
+export const ADD_LISTINGS = "ADD_LISTINGS";
+export const SET_LISTINGS = "SET_LISTINGS";

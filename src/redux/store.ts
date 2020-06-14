@@ -3,14 +3,18 @@ import { createStore, combineReducers} from 'redux';
 import {FiltersReducer, FiltersInitialState} from "./Filters/reducer";
 import {MenuReducer, MenusInitialState} from "./Menus/reducer";
 
+import {ListingsReducer, ListingsInitialState} from "./Listings/reducer";
+
 const InitialState = {
     filters: FiltersInitialState,
-    menus: MenusInitialState
+    menus: MenusInitialState,
+    listings: ListingsInitialState
 }
 
 const reducers = combineReducers({
     filters: FiltersReducer,
-    menus: MenuReducer
+    menus: MenuReducer,
+    listings: ListingsReducer
 })
 
 const store = createStore(reducers, InitialState)
