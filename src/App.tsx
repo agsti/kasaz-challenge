@@ -31,9 +31,6 @@ const App = () => {
             <SearchBar />
         { 
             menuState.showFilterMenu && <FilterView 
-                nRooms={["1+", "2+", "3+", "4+", "5+"]}
-                prices={["1","2","3","4"]}
-                propSizes={["30", "40", "50"]}
              />
         }
 			<ListingsList

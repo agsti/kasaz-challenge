@@ -1,92 +1,84 @@
 import React from "react";
+import FilterMenuView, {OptionsValue} from "./FilterView";
+import { useSelector, useDispatch } from "react-redux";
+import { SelectFilterState } from "../../redux/Filters/selectors";
+import * as FilterActions from "../../redux/Filters/actions";
 
-import "./FilterView.css";
-
-type FilterViewProps = {
-    prices: string[], 
-    propSizes: string[], 
-    nRooms: string[]
-}
+const MapValueToOptions = (sufix:string, overrides?:{ [key:number]:string; }) => 
+            (v:number ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v]:`${v}${sufix}`})
 
 
-export default function FilterView(props: FilterViewProps) {
-    const {prices, propSizes, nRooms} = props;
-    return (
-        <div className="filter-view-container">
-            <div className="filter-row">
-                <div className="filter-title">
-                    PRECIO
-            </div>
-                <div className="filter-min-max">
-                    <select id="filter-price-min">
-                       <option value="" disabled selected>Precio minimo</option>
-                        {
-                            prices.map(p => (
-                                <option value={p} key={p} >{p}</option>
-                            ))
-                        }
-                    </select>
-					<div>
-						-
-					</div>
+const FindOption = (value:number, options:OptionsValue[]) => options.find(o => o.value===value) 
 
-                    <select id="filter-price-max">
-                       <option value="" disabled selected>Precio maximo</option>
-                        {
-                            prices.map(p => (
-                                <option value={p} key={p} >{p}</option>
-                            ))
-                        }
-                    </select>
-                </div>
-            </div>
+const FilterPrices = [
+    0,
+    100000,
+    150000,
+    200000,
+    400000,
+    500000,
+].map(MapValueToOptions("€", {0:"Sin Limite"}))
 
-            <div className="filter-row">
-                <div className="filter-title">
-                    TAMANO
-            </div>
 
-                <div className="filter-min-max">
-                    <select id="filter-prop-size-min">
-                       <option value="" disabled selected>Tamano minimo</option>
-                        {
-                            propSizes.map(p => (
-                                <option value={p} key={p} >{p}</option>
-                            ))
-                        }
-                    </select>
-					<div>
-						-
-					</div>
-                    <select id="filter-prop-size-max">
-                       <option value="" disabled selected>Tamano maximo</option>
-                        {
-                            propSizes.map(p => (
-                                <option value={p} key={p} >{p}</option>
-                            ))
-                        }
-                    </select>
+const FilterNRooms = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+].map(MapValueToOptions("+", {0:"TODAS"}))
 
-                </div>
-            </div>
+const FilterSizes = [
+    0,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+].map(MapValueToOptions(" m²"))
 
-            <div className="filter-row">
-                <div className="filter-title">
-                    HABITACIONES
-                </div>
-            </div>
-                <ol className="nrooms-list">
-					<li className="selected">TODOS</li>
-                    {
-                        nRooms.map(r => (
-                            <li key={r}>{r}</li>
-                        ))
-                    }
-                </ol>
-			<div className="see-listings">
-				VER INMUEBLES
-			</div>
-        </div>
-    )
+
+export default function FilterMenu(){
+    const filterData = useSelector(SelectFilterState);
+    const dispatch = useDispatch();
+
+    let filterValues= {
+        minPrice: FindOption(filterData.minPrice, FilterPrices), 
+        maxPrice: FindOption(filterData.maxPrice, FilterPrices),
+        minSizeSqm: FindOption(filterData.minSize, FilterSizes),
+        maxSizeSqm: FindOption(filterData.maxSize, FilterSizes),
+        minRooms: FindOption(filterData.minRooms, FilterNRooms),
+    }
+
+
+    let callbacks = {
+        minPrice: (v : number) =>{
+            dispatch(FilterActions.SetMinPrice(v))
+        }, 
+		maxPrice: (v : number) =>{
+            dispatch(FilterActions.SetMaxPrice(v))
+        },
+		minSizeSqm: (v : number) =>{
+            dispatch(FilterActions.SetMinSize(v))
+        },
+		maxSizeSqm: (v : number) =>{
+            dispatch(FilterActions.SetMaxSize(v))
+        },
+		minRooms: (v : number) =>{
+            dispatch(FilterActions.SetMinRooms(v))
+        },
+    }
+
+    return <FilterMenuView
+        prices={FilterPrices}
+        nRooms={FilterNRooms}
+        sizes={FilterSizes}
+        filterValues={filterValues}
+        callbacks={callbacks}
+   />
 
 }

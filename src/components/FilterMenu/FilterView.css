@@ -19,8 +19,8 @@
     padding: 0 10%;
 }
 
-.filter-min-max > select {
-    width: 120px;
+.filter-dropdown {
+    width: 150px;
 }
 
 .filter-title {
