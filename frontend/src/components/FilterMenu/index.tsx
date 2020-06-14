@@ -7,6 +7,7 @@ import * as FilterActions from "../../redux/Filters/actions";
 
 import {ToggleFilterMenu} from "../../redux/Menus/actions";
 import {SelectMenuState} from "../../redux/Menus/selectors";
+import { GetNewListings } from "../../redux/Listings/thunks";
 
 const MapValueToOptions = (sufix:string, overrides?:{ [key:number]:string; }) => 
             (v:number ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v]:`${v.toLocaleString()}${sufix}`})
@@ -84,7 +85,7 @@ export default function FilterMenu(){
     }
 
     const onClickSeeListings = () => {
-        console.log(filterData)
+        dispatch(GetNewListings())
         dispatch(FilterActions.SetFilterOufOfSync(false))
         dispatch(ToggleFilterMenu())
     }

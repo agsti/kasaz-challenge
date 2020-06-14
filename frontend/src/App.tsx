@@ -1,5 +1,5 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, { useEffect } from "react";
+import {useSelector, useDispatch} from "react-redux";
 import { hot } from "react-hot-loader/root";
 
 import HeaderBar from "./components/HeaderBar";
@@ -11,9 +11,16 @@ import { SelectListingsState } from "./redux/Listings/selectors";
 
 import "./App.css";
 import 'reset-css';
+import { GetNewListings } from "./redux/Listings/thunks";
 
 
 const App = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(GetNewListings())
+    }, [])
+
+
     const listingsState = useSelector(SelectListingsState)    
 
     return(

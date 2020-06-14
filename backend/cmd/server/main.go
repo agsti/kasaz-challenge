@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/ihatetohink/kasaz-backend/lib"
 )
@@ -32,6 +33,7 @@ func main(){
     panicIfError(err)
 
     router := gin.Default()
+    router.Use(cors.Default())
     router.GET("/listings", func(c * gin.Context) {
         minAreaStr := c.Query("minArea")
         maxAreaStr := c.Query("maxArea")

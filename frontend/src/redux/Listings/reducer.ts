@@ -24,7 +24,8 @@ const l = {
 
 
 export const ListingsInitialState = {
-    listings : [l, l, l] as Listing[]
+    listings : [] as Listing[],
+    nextPage: 0 as number
 }
 
 type ListingsStateType = typeof ListingsInitialState;
@@ -33,11 +34,13 @@ export const ListingsReducer = (state: ListingsStateType = ListingsInitialState,
     switch(action.type) {
         case ADD_LISTINGS:
             return Object.assign({}, state, {
-                listings: [...state.listings, action.payload]
+                listings: [...state.listings, action.payload],
+                nextPage: state.nextPage + 1
             })
         case SET_LISTINGS:
             return Object.assign({}, state, {
-                listings: [...action.payload]
+                listings: [...action.payload],
+                nextPage: 1
             })
         default:
             return state;

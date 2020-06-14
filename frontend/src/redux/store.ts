@@ -1,4 +1,6 @@
-import { createStore, combineReducers} from 'redux';
+import { createStore, combineReducers, applyMiddleware} from 'redux';
+
+import thunk from 'redux-thunk';
 
 import {FiltersReducer, FiltersInitialState} from "./Filters/reducer";
 import {MenuReducer, MenusInitialState} from "./Menus/reducer";
@@ -17,7 +19,7 @@ const reducers = combineReducers({
     listings: ListingsReducer
 })
 
-const store = createStore(reducers, InitialState)
+const store = createStore(reducers, applyMiddleware(thunk))
 
 export type RootStateType = typeof InitialState;
 

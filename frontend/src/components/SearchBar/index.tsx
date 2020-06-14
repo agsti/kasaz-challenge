@@ -5,6 +5,7 @@ import {SelectMenuState} from "../../redux/Menus/selectors";
 import {SetCity, SetFilterOufOfSync} from "../../redux/Filters/actions";
 import {ToggleFilterMenu} from "../../redux/Menus/actions";
 import { SelectFilterState } from "../../redux/Filters/selectors";
+import { GetNewListings } from "../../redux/Listings/thunks";
 
 
 export default function SearchBar() {
@@ -15,7 +16,9 @@ export default function SearchBar() {
     return (
         <SearchBarView
             onSearch={search => {
-                console.log("API CALL AND ALL THAT")
+                dispatch(GetNewListings())
+                dispatch(SetFilterOufOfSync(false))
+                dispatch(ToggleFilterMenu())
             }}
             onFilterButtonClicked={ () =>{
                 dispatch(ToggleFilterMenu())
