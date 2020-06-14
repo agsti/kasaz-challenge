@@ -25,7 +25,7 @@ const ListingItem = (props : ListingItemProps) => {
                 <img src={picture} />
                 <div className="listing-prices">
                     <div className="listing-price">
-                        {price.toLocaleString("es")} €
+                        {price.toLocaleString()} €
                      </div>
                     <div className="listing-price-sqm">
                         {priceSqm} €/m²

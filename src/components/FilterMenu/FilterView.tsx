@@ -21,10 +21,10 @@ type FilterViewProps = {
 	}
 	
 	filterValues: {
-		minPrice: OptionsValue, 
-		maxPrice: OptionsValue,
-		minSizeSqm: OptionsValue,
-		maxSizeSqm: OptionsValue,
+		minPrice?: OptionsValue, 
+		maxPrice?: OptionsValue,
+		minSizeSqm?: OptionsValue,
+		maxSizeSqm?: OptionsValue,
 		minRooms: OptionsValue,
 	}
 }
@@ -61,16 +61,16 @@ export default function FilterView(props: FilterViewProps) {
             </div>
                 <div className="filter-min-max">
               <Select
-			  		className="filter-dropdown"
+					  className="filter-dropdown"
+					  placeholder="Precio minimo"
 					value={minPrice}
 					onChange={(v:OptionsValue) => callbacks.minPrice(v.value)}
 					options={prices}
 				  />
-			<div>
-			-
-			</div> 
+		
               <Select
-			  		className="filter-dropdown"
+					  className="filter-dropdown"
+					  placeholder="Precio maximo"
 					value={maxPrice}
 					onChange={(v:OptionsValue) => callbacks.maxPrice(v.value)}
 					options={prices}
@@ -80,24 +80,24 @@ export default function FilterView(props: FilterViewProps) {
 
             <div className="filter-row">
                 <div className="filter-title">
-                    TAMANO
+                    TAMAÑO
             </div>
 
                 <div className="filter-min-max">
               <Select
-			  		className="filter-dropdown"
+					  className="filter-dropdown"
+					  placeholder="Tamaño minimo"
 					value={minSizeSqm}
 					onChange={(v:OptionsValue) => callbacks.minSizeSqm(v.value)}
 					options={sizes}
 				  />
-					<div>
-						-
-					</div>
+					
               <Select
-			  		className="filter-dropdown"
+					  className="filter-dropdown"
+					  placeholder="Tamaño maximo"
 					value={maxSizeSqm}
 					onChange={(v:OptionsValue) => callbacks.maxSizeSqm(v.value)}
-					options={prices}
+					options={sizes}
 				  />
 
                 </div>

@@ -9,7 +9,7 @@ import {ToggleFilterMenu} from "../../redux/Menus/actions";
 import {SelectMenuState} from "../../redux/Menus/selectors";
 
 const MapValueToOptions = (sufix:string, overrides?:{ [key:number]:string; }) => 
-            (v:number ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v]:`${v}${sufix}`})
+            (v:number ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v]:`${v.toLocaleString()}${sufix}`})
 
 
 const FindOption = (value:number, options:OptionsValue[]) => options.find(o => o.value===value) 

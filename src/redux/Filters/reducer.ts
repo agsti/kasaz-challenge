@@ -10,10 +10,10 @@ import {
 
 
 export const FiltersInitialState = {
-    minPrice : 0 as number,
-    maxPrice : 0 as number,
-    minSize : 0 as number,
-    maxSize : 0 as number,
+    minPrice : null as number,
+    maxPrice : null as number,
+    minSize : null as number,
+    maxSize : null as number,
     minRooms : 0 as number,
     city : "Barcelona" as string,
     outOfSync : false as boolean,
