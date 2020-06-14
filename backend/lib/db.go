@@ -1,9 +1,13 @@
 package lib
 
 import (
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
+
+const PAGE_SIZE = 50
 
 type Database struct {
     db *gorm.DB
@@ -28,7 +32,7 @@ func (d *Database) ListAll() []Listing {
     return ret
 }
 
-func (d *Database) Filter(minPrice, maxPrice, minArea, maxArea, minRooms *int)  []Listing{
+func (d *Database) Filter(minPrice, maxPrice, minArea, maxArea, minRooms, page *int)  []Listing{
     tx := d.db
     if minPrice != nil {
         tx = tx.Where("price > ?", minPrice)
@@ -47,7 +51,10 @@ func (d *Database) Filter(minPrice, maxPrice, minArea, maxArea, minRooms *int)  
     }
 
     var ret []Listing
-    tx.Find(&ret)
+    offset := PAGE_SIZE * *page
+    fmt.Println("OFFSET", offset)
+    fmt.Println("LIMIT", PAGE_SIZE)
+    tx.Offset(offset).Limit(PAGE_SIZE).Find(&ret)
     return ret
 }
 
