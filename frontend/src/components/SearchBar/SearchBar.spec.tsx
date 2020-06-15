@@ -4,10 +4,7 @@ import {describe, expect, it} from '@jest/globals';
 
 import SearchBarView from './SearchBarView';
 
-describe('SearchBar', () => {
-
-
-
+describe('SearchBarView', () => {
 
   it('should render correctly with ArrowLooking Up', () => {
     const component = shallow(<SearchBarView
