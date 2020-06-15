@@ -3,7 +3,7 @@ import SearchBarView from "./SearchBarView";
 import {useSelector, useDispatch} from "react-redux";
 
 import {SelectMenuState} from "../../redux/Menus/selectors";
-import {SetCity, SetFilterOufOfSync} from "../../redux/Filters/actions";
+import {SetCity, SetFilterOutOfSync} from "../../redux/Filters/actions";
 import {ToggleFilterMenu} from "../../redux/Menus/actions";
 import { GetNewListings } from "../../redux/Listings/thunks";
 import { SelectFilterState } from "../../redux/Filters/selectors";
@@ -18,7 +18,7 @@ export default function SearchBar() {
         <SearchBarView
             onSearch={search => {
                 dispatch(GetNewListings())
-                dispatch(SetFilterOufOfSync(false))
+                dispatch(SetFilterOutOfSync(false))
                 dispatch(ToggleFilterMenu())
             }}
             onFilterButtonClicked={ () =>{
@@ -29,7 +29,7 @@ export default function SearchBar() {
             searchValue={filterState.city}
             setSearchValue={v => {
                 dispatch(SetCity(v))
-                !filterState.outOfSync && dispatch(SetFilterOufOfSync(true))
+                !filterState.outOfSync && dispatch(SetFilterOutOfSync(true))
             }
             }
     />

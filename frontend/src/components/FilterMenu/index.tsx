@@ -1,8 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import FilterMenuView, {OptionsValue} from "./FilterView";
 import { useSelector, useDispatch } from "react-redux";
 
-import { SelectFilterState } from "../../redux/Filters/selectors";
 import * as FilterActions from "../../redux/Filters/actions";
 
 import {ToggleFilterMenu} from "../../redux/Menus/actions";
@@ -10,6 +9,7 @@ import {SelectMenuState} from "../../redux/Menus/selectors";
 import { GetNewListings } from "../../redux/Listings/thunks";
 import { SetScrollPosition } from "../../redux/Listings/actions";
 import {isSizesOk, isPricesOk} from "./validations";
+import {SelectFilterState} from "../../redux/Filters/selectors";
 
 const MapValueToOptions = (sufix:string, overrides?:{ [key:string]:string; }) => 
             (v:any ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v] :`${v.toLocaleString()}${sufix}`})
@@ -51,56 +51,72 @@ const FilterSizes = [
 
 
 export default function FilterMenu(){
-    const filterData = useSelector(SelectFilterState);
+    const [minPrice, setMinPrice] = useState(null)
+    const [maxPrice, setMaxPrice] = useState(null as number)
+    const [minSize, setMinSize] = useState(null as number)
+    const [maxSize, setMaxSize] = useState(null as number)
+    const [minRooms, setMinRooms] = useState(0 as number)
+
     const menuData = useSelector(SelectMenuState);
+    const filterData = useSelector(SelectFilterState);
     const dispatch = useDispatch();
 
     const filterValues= {
-        minPrice: FindOption(filterData.minPrice, FilterPrices), 
-        maxPrice: FindOption(filterData.maxPrice, FilterPrices),
-        minSizeSqm: FindOption(filterData.minSize, FilterSizes),
-        maxSizeSqm: FindOption(filterData.maxSize, FilterSizes),
-        minRooms: FindOption(filterData.minRooms, FilterNRooms),
+        minPrice: FindOption(minPrice, FilterPrices), 
+        maxPrice: FindOption(maxPrice, FilterPrices),
+        minSizeSqm: FindOption(minSize, FilterSizes),
+        maxSizeSqm: FindOption(maxSize, FilterSizes),
+        minRooms: FindOption(minRooms, FilterNRooms),
     }
 
 
     const callbacks = {
         minPrice: (v : number) =>{
-            dispatch(FilterActions.SetMinPrice(v))
-            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
+            setMinPrice(v)
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOutOfSync(true))
         }, 
 		maxPrice: (v : number) =>{
-            dispatch(FilterActions.SetMaxPrice(v))
-            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
+            setMaxPrice(v)
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOutOfSync(true))
         },
 		minSizeSqm: (v : number) =>{
-            dispatch(FilterActions.SetMinSize(v))
-            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
+            setMinSize(v)
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOutOfSync(true))
         },
 		maxSizeSqm: (v : number) =>{
-            dispatch(FilterActions.SetMaxSize(v))
-            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
+            setMaxSize(v)
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOutOfSync(true))
         },
 		minRooms: (v : number) =>{
-            dispatch(FilterActions.SetMinRooms(v))
-            !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
+            setMinRooms(v)
+            !filterData.outOfSync && dispatch(FilterActions.SetFilterOutOfSync(true))
         },
     }
 
     const onClickSeeListings = () => {
+        dispatch(FilterActions.SetFilterOutOfSync(false))
+
         dispatch(SetScrollPosition(0))
-        dispatch(FilterActions.SetFilterOufOfSync(false))
         dispatch(ToggleFilterMenu())
+
+        dispatch(FilterActions.SetMinPrice(minPrice))
+        dispatch(FilterActions.SetMaxPrice(maxPrice))
+
+        dispatch(FilterActions.SetMinSize(minSize))
+        dispatch(FilterActions.SetMaxSize(maxSize))
+        dispatch(FilterActions.SetMinRooms(minRooms))
+
         dispatch(GetNewListings())
     }
 
-    const pricesErr = !isPricesOk(filterData.minPrice, filterData.maxPrice)
-    const sizesErr = !isSizesOk(filterData.minSize, filterData.maxSize)
+    const pricesErr = !isPricesOk(minPrice, maxPrice)
+    const sizesErr = !isSizesOk(minSize, maxSize)
     return <FilterMenuView
         visible={menuData.showFilterMenu}
         prices={FilterPrices}
         nRooms={FilterNRooms}
         sizes={FilterSizes}
+
         enableSeeListings={filterData.outOfSync}
         filterValues={filterValues}
         callbacks={callbacks}

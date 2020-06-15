@@ -30,7 +30,7 @@ export const SetCity = (cityName: string) => ({
     payload: cityName
 })
 
-export const SetFilterOufOfSync = (outOfSync: boolean) => ({
+export const SetFilterOutOfSync = (outOfSync: boolean) => ({
     type: AT.SET_FILTERS_OUT_OF_SYNC,
     payload: outOfSync
 })

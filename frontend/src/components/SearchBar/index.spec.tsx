@@ -27,7 +27,7 @@ jest.mock("../../redux/Menus/actions")
 
 
 import { GetNewListings } from "../../redux/Listings/thunks";
-import { SetFilterOufOfSync } from "../../redux/Filters/actions";
+import { SetFilterOutOfSync } from "../../redux/Filters/actions";
 import { ToggleFilterMenu } from "../../redux/Menus/actions";
 
 
