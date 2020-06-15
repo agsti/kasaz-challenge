@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar should render correctly with ArrowLooking Down 1`] = `
+<div
+  className="search-container"
+>
+  <SearchBox
+    onChange={[Function]}
+    onSearch={[MockFunction]}
+    showSearchButton={false}
+    value="search"
+  />
+  <div
+    className="filter-btn"
+    onClick={[Function]}
+  >
+    Filtros
+    <img
+      className="filter-icon"
+      src=""
+    />
+  </div>
+</div>
+`;
+
+exports[`SearchBar should render correctly with ArrowLooking Up 1`] = `
+<div
+  className="search-container"
+>
+  <SearchBox
+    onChange={[Function]}
+    onSearch={[MockFunction]}
+    showSearchButton={false}
+    value="search"
+  />
+  <div
+    className="filter-btn"
+    onClick={[Function]}
+  >
+    Filtros
+    <img
+      className="filter-icon filter-menu-shown"
+      src=""
+    />
+  </div>
+</div>
+`;
