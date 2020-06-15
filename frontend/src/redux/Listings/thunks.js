@@ -1,5 +1,5 @@
 import { GetListings } from "../../api";
-import { SetListings } from "./actions";
+import { SetListings, AddListings } from "./actions";
 
 
 const mapApiToFE = (apiReponse) =>{
@@ -28,6 +28,23 @@ export const GetNewListings = () => {
             0
         ).then(r =>{
             dispatch(SetListings(r.data.map(mapApiToFE)))
+        })
+    }
+}
+
+export const GetMoreListings = () => {
+    return function(dispatch , getState) {
+        const {filters, listings} = getState()
+ 
+        return GetListings(
+            filters.minSize, 
+            filters.maxSize,
+            filters.minPrice, 
+            filters.maxPrice, 
+            filters.minRooms, 
+            listings.nextPage
+        ).then(r =>{
+            dispatch(AddListings(r.data.map(mapApiToFE)))
         })
     }
 }

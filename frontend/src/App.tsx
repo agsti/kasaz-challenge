@@ -11,11 +11,13 @@ import { SelectListingsState } from "./redux/Listings/selectors";
 
 import "./App.css";
 import 'reset-css';
-import { GetNewListings } from "./redux/Listings/thunks";
+import { GetNewListings, GetMoreListings } from "./redux/Listings/thunks";
+import { SetScrollPosition } from "./redux/Listings/actions";
 
 
 const App = () => {
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(GetNewListings())
     }, [])
@@ -31,6 +33,12 @@ const App = () => {
                <FilterView />
                 <ListingsList
                     listings = {listingsState.listings}
+                    scrollPosition={listingsState.scrollPosition}
+                    onEndOfScroll={(scrollPos) => {
+                        dispatch(SetScrollPosition(scrollPos))
+                        dispatch(GetMoreListings())
+                        
+                    }}
                 />
 	        </div>
 

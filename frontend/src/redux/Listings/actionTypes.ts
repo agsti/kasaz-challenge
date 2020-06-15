@@ -1,2 +1,3 @@
 export const ADD_LISTINGS = "ADD_LISTINGS";
 export const SET_LISTINGS = "SET_LISTINGS";
+export const SET_SCROLL_POSITION = "SET_SCROLL_POSITION";
