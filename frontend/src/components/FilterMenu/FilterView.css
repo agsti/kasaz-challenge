@@ -51,6 +51,7 @@
 	border-top: #3335 solid 1px;
 	border-bottom: #3335 solid 1px;
 	border-right: #3335 solid 1px;
+	cursor: pointer;
 }
 
 .nrooms-list > li:first-child {

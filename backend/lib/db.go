@@ -7,7 +7,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
-const PAGE_SIZE = 50
+const PAGE_SIZE = 10
 
 type Database struct {
     db *gorm.DB
