@@ -20,6 +20,11 @@
     align-items: center;
 }
 
+.search-box:focus {
+    border-radius: 7px;
+    border: 1px solid #41af68;
+}
+
 .search-input {
     width: 100%;
     min-width: 0px;

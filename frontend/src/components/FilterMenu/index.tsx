@@ -9,20 +9,21 @@ import {ToggleFilterMenu} from "../../redux/Menus/actions";
 import {SelectMenuState} from "../../redux/Menus/selectors";
 import { GetNewListings } from "../../redux/Listings/thunks";
 
-const MapValueToOptions = (sufix:string, overrides?:{ [key:number]:string; }) => 
-            (v:number ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v]:`${v.toLocaleString()}${sufix}`})
+const MapValueToOptions = (sufix:string, overrides?:{ [key:string]:string; }) => 
+            (v:any ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v] :`${v.toLocaleString()}${sufix}`})
 
 
 const FindOption = (value:number, options:OptionsValue[]) => options.find(o => o.value===value) 
 
 const FilterPrices = [
+    "",
     0,
     100000,
     150000,
     200000,
     400000,
     500000,
-].map(MapValueToOptions("€", {0:"Sin Limite"}))
+].map(MapValueToOptions("€", {"": "Sin limite"}))
 
 
 const FilterNRooms = [
@@ -35,7 +36,7 @@ const FilterNRooms = [
 ].map(MapValueToOptions("+", {0:"TODAS"}))
 
 const FilterSizes = [
-    0,
+    "",
     20,
     30,
     40,
@@ -44,7 +45,7 @@ const FilterSizes = [
     70,
     80,
     90,
-].map(MapValueToOptions(" m²"))
+].map(MapValueToOptions(" m²", {"": "Sin limite"}))
 
 
 export default function FilterMenu(){

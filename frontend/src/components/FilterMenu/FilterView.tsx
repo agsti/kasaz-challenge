@@ -64,7 +64,7 @@ export default function FilterView(props: FilterViewProps) {
 					  className="filter-dropdown"
 					  placeholder="Precio minimo"
 					value={minPrice}
-					onChange={(v:OptionsValue) => callbacks.minPrice(v.value)}
+					onChange={(v:OptionsValue) => callbacks.minPrice(v.value || null)}
 					options={prices}
 				  />
 		
@@ -72,7 +72,7 @@ export default function FilterView(props: FilterViewProps) {
 					  className="filter-dropdown"
 					  placeholder="Precio maximo"
 					value={maxPrice}
-					onChange={(v:OptionsValue) => callbacks.maxPrice(v.value)}
+					onChange={(v:OptionsValue) => callbacks.maxPrice(v.value || null)}
 					options={prices}
 				  />
                 </div>
@@ -88,7 +88,7 @@ export default function FilterView(props: FilterViewProps) {
 					  className="filter-dropdown"
 					  placeholder="Tamaño minimo"
 					value={minSizeSqm}
-					onChange={(v:OptionsValue) => callbacks.minSizeSqm(v.value)}
+					onChange={(v:OptionsValue) => callbacks.minSizeSqm(v.value || null)}
 					options={sizes}
 				  />
 					
@@ -96,7 +96,7 @@ export default function FilterView(props: FilterViewProps) {
 					  className="filter-dropdown"
 					  placeholder="Tamaño maximo"
 					value={maxSizeSqm}
-					onChange={(v:OptionsValue) => callbacks.maxSizeSqm(v.value)}
+					onChange={(v:OptionsValue) => callbacks.maxSizeSqm(v.value || null)}
 					options={sizes}
 				  />
 
