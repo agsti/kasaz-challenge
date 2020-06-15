@@ -14,21 +14,20 @@ const mockedA = mocked(axios, true);
 // const mockedAxios = Axios as jest.Mocked<typeof Axios>;
 
 describe('Backend API', () => {
-    it('should set query params correctly when NO params are set', () => {
-
+    it('should set different host when deployed in production', () => {
+        process.env.NODE_ENV = "production"
         GetListings()
-        expect(mockedA.get).toBeCalledWith("http://localhost:8080/listings", {
-            params:
-            {
-               
-            }
-        }
-    )
+        expect(mockedA.get).toBeCalledWith("/api/listings", {params:{}} )
+    });
 
+    it('should set query params correctly when NO params are set', () => {
+        process.env.NODE_ENV = "development"
+        GetListings()
+        expect(mockedA.get).toBeCalledWith("http://localhost:8080/listings", {params:{}} )
     });
 
     it('should set query params correctly when ALL params are set', () => {
-
+        process.env.NODE_ENV = "development"
         GetListings(1, 2, 3, 4, 5, 6)
         expect(mockedA.get).toBeCalledWith("http://localhost:8080/listings", {
                 params:
@@ -42,7 +41,5 @@ describe('Backend API', () => {
                 }
             }
         )
-
-        
     });
 });

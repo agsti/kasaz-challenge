@@ -13,5 +13,13 @@ export function GetListings(minArea? : number, maxArea? : number, minPrice? : nu
         
       );
 
-    return axios.get('http://localhost:8080/listings', { params })
+    let endpoint;
+    if (process.env.NODE_ENV === "production") {
+        endpoint = '/api/listings'
+    } else {
+        endpoint = 'http://localhost:8080/listings'
+    }
+
+
+    return axios.get(endpoint, { params })
 }

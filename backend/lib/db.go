@@ -1,8 +1,6 @@
 package lib
 
 import (
-	"fmt"
-
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
@@ -52,8 +50,6 @@ func (d *Database) Filter(minPrice, maxPrice, minArea, maxArea, minRooms, page *
 
     var ret []Listing
     offset := PAGE_SIZE * *page
-    fmt.Println("OFFSET", offset)
-    fmt.Println("LIMIT", PAGE_SIZE)
     tx.Offset(offset).Limit(PAGE_SIZE).Find(&ret)
     return ret
 }
