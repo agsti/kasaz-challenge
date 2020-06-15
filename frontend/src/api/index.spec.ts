@@ -4,7 +4,7 @@ import { describe, expect, it, jest } from '@jest/globals';
 
 import { mocked } from 'ts-jest/utils';
 
-import axios, { AxiosStatic } from "axios";
+import axios from "axios";
 jest.mock('axios')
 
 

@@ -1,11 +1,12 @@
 import React from "react";
 import SearchBarView from "./SearchBarView";
 import {useSelector, useDispatch} from "react-redux";
+
 import {SelectMenuState} from "../../redux/Menus/selectors";
 import {SetCity, SetFilterOufOfSync} from "../../redux/Filters/actions";
 import {ToggleFilterMenu} from "../../redux/Menus/actions";
-import { SelectFilterState } from "../../redux/Filters/selectors";
 import { GetNewListings } from "../../redux/Listings/thunks";
+import { SelectFilterState } from "../../redux/Filters/selectors";
 
 
 export default function SearchBar() {

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterMenu should render correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <SearchBar>
+    <SearchBarView
+      filterArrowLookingUp={true}
+      onFilterButtonClicked={[Function]}
+      onSearch={[Function]}
+      searchHasChanged={true}
+      searchValue="city"
+      setSearchValue={[Function]}
+    >
+      <div
+        className="search-container"
+      >
+        <SearchBox
+          onChange={[Function]}
+          onSearch={[Function]}
+          showSearchButton={true}
+          value="city"
+        >
+          <span
+            className="search-box"
+          >
+            <input
+              className="search-input"
+              onChange={[Function]}
+              value="city"
+            />
+            <span
+              className="search-icon"
+            >
+              <img
+                onClick={[Function]}
+                src=""
+              />
+            </span>
+          </span>
+        </SearchBox>
+        <div
+          className="filter-btn"
+          onClick={[Function]}
+        >
+          Filtros
+          <img
+            className="filter-icon filter-menu-shown"
+            src=""
+          />
+        </div>
+      </div>
+    </SearchBarView>
+  </SearchBar>
+</Provider>
+`;
