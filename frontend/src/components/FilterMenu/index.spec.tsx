@@ -43,6 +43,7 @@ describe('FilterMenu', () => {
 
 
     it('should render correctly', () => {
+    // This needs to be updated, state of the component is no longer global.
         expect(component).toMatchSnapshot()
     })
 

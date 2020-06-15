@@ -28,19 +28,13 @@ exports[`FilterMenu should render correctly 1`] = `
       filterValues={
         Object {
           "maxPrice": undefined,
-          "maxSizeSqm": Object {
-            "label": "40 m²",
-            "value": 40,
-          },
+          "maxSizeSqm": undefined,
           "minPrice": undefined,
           "minRooms": Object {
-            "label": "3+",
-            "value": 3,
+            "label": "TODAS",
+            "value": 0,
           },
-          "minSizeSqm": Object {
-            "label": "30 m²",
-            "value": 30,
-          },
+          "minSizeSqm": undefined,
         }
       }
       nRooms={
@@ -3488,12 +3482,6 @@ exports[`FilterMenu should render correctly 1`] = `
                 ]
               }
               placeholder="Tamaño minimo"
-              value={
-                Object {
-                  "label": "30 m²",
-                  "value": 30,
-                }
-              }
             >
               <Select
                 backspaceRemovesValue={true}
@@ -3577,12 +3565,7 @@ exports[`FilterMenu should render correctly 1`] = `
                 styles={Object {}}
                 tabIndex="0"
                 tabSelectsValue={true}
-                value={
-                  Object {
-                    "label": "30 m²",
-                    "value": 30,
-                  }
-                }
+                value={null}
               >
                 <SelectContainer
                   className="filter-dropdown"
@@ -3590,7 +3573,7 @@ exports[`FilterMenu should render correctly 1`] = `
                   cx={[Function]}
                   getStyles={[Function]}
                   getValue={[Function]}
-                  hasValue={true}
+                  hasValue={false}
                   innerProps={
                     Object {
                       "id": undefined,
@@ -3723,10 +3706,7 @@ exports[`FilterMenu should render correctly 1`] = `
                       "styles": Object {},
                       "tabIndex": "0",
                       "tabSelectsValue": true,
-                      "value": Object {
-                        "label": "30 m²",
-                        "value": 30,
-                      },
+                      "value": null,
                     }
                   }
                   setValue={[Function]}
@@ -3784,7 +3764,7 @@ exports[`FilterMenu should render correctly 1`] = `
                         cx={[Function]}
                         getStyles={[Function]}
                         getValue={[Function]}
-                        hasValue={true}
+                        hasValue={false}
                         innerProps={
                           Object {
                             "onMouseDown": [Function],
@@ -3919,10 +3899,7 @@ exports[`FilterMenu should render correctly 1`] = `
                             "styles": Object {},
                             "tabIndex": "0",
                             "tabSelectsValue": true,
-                            "value": Object {
-                              "label": "30 m²",
-                              "value": 30,
-                            },
+                            "value": null,
                           }
                         }
                         setValue={[Function]}
@@ -3997,7 +3974,7 @@ exports[`FilterMenu should render correctly 1`] = `
                               cx={[Function]}
                               getStyles={[Function]}
                               getValue={[Function]}
-                              hasValue={true}
+                              hasValue={false}
                               isDisabled={false}
                               isMulti={false}
                               isRtl={false}
@@ -4123,10 +4100,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                   "styles": Object {},
                                   "tabIndex": "0",
                                   "tabSelectsValue": true,
-                                  "value": Object {
-                                    "label": "30 m²",
-                                    "value": 30,
-                                  },
+                                  "value": null,
                                 }
                               }
                               setValue={[Function]}
@@ -4181,21 +4155,17 @@ exports[`FilterMenu should render correctly 1`] = `
                                 <div
                                   className=" css-g1d714-ValueContainer"
                                 >
-                                  <SingleValue
+                                  <Placeholder
                                     clearValue={[Function]}
                                     cx={[Function]}
-                                    data={
-                                      Object {
-                                        "label": "30 m²",
-                                        "value": 30,
-                                      }
-                                    }
                                     getStyles={[Function]}
                                     getValue={[Function]}
-                                    hasValue={true}
+                                    hasValue={false}
                                     isDisabled={false}
+                                    isFocused={false}
                                     isMulti={false}
                                     isRtl={false}
+                                    key="placeholder"
                                     options={
                                       Array [
                                         Object {
@@ -4318,10 +4288,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "30 m²",
-                                          "value": 30,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     setValue={[Function]}
@@ -4356,33 +4323,29 @@ exports[`FilterMenu should render correctly 1`] = `
                                     }
                                   >
                                     <EmotionCssPropInternal
-                                      __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SingleValue"
+                                      __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
                                       __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
                                       className=""
                                       css={
                                         Object {
                                           "boxSizing": "border-box",
-                                          "color": "hsl(0, 0%, 20%)",
-                                          "label": "singleValue",
+                                          "color": "hsl(0, 0%, 50%)",
+                                          "label": "placeholder",
                                           "marginLeft": 2,
                                           "marginRight": 2,
-                                          "maxWidth": "calc(100% - 8px)",
-                                          "overflow": "hidden",
                                           "position": "absolute",
-                                          "textOverflow": "ellipsis",
                                           "top": "50%",
                                           "transform": "translateY(-50%)",
-                                          "whiteSpace": "nowrap",
                                         }
                                       }
                                     >
                                       <div
-                                        className=" css-1uccc91-singleValue"
+                                        className=" css-1wa3eu0-placeholder"
                                       >
-                                        30 m²
+                                        Tamaño minimo
                                       </div>
                                     </EmotionCssPropInternal>
-                                  </SingleValue>
+                                  </Placeholder>
                                   <Input
                                     aria-autocomplete="list"
                                     autoCapitalize="none"
@@ -4478,10 +4441,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "30 m²",
-                                          "value": 30,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     spellCheck="false"
@@ -4629,7 +4589,7 @@ exports[`FilterMenu should render correctly 1`] = `
                               cx={[Function]}
                               getStyles={[Function]}
                               getValue={[Function]}
-                              hasValue={true}
+                              hasValue={false}
                               isDisabled={false}
                               isMulti={false}
                               isRtl={false}
@@ -4755,10 +4715,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                   "styles": Object {},
                                   "tabIndex": "0",
                                   "tabSelectsValue": true,
-                                  "value": Object {
-                                    "label": "30 m²",
-                                    "value": 30,
-                                  },
+                                  "value": null,
                                 }
                               }
                               setValue={[Function]}
@@ -4814,7 +4771,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                     cx={[Function]}
                                     getStyles={[Function]}
                                     getValue={[Function]}
-                                    hasValue={true}
+                                    hasValue={false}
                                     isDisabled={false}
                                     isFocused={false}
                                     isMulti={false}
@@ -4941,10 +4898,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "30 m²",
-                                          "value": 30,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     setValue={[Function]}
@@ -5004,7 +4958,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                     cx={[Function]}
                                     getStyles={[Function]}
                                     getValue={[Function]}
-                                    hasValue={true}
+                                    hasValue={false}
                                     innerProps={
                                       Object {
                                         "aria-hidden": "true",
@@ -5138,10 +5092,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "30 m²",
-                                          "value": 30,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     setValue={[Function]}
@@ -5298,12 +5249,6 @@ exports[`FilterMenu should render correctly 1`] = `
                 ]
               }
               placeholder="Tamaño maximo"
-              value={
-                Object {
-                  "label": "40 m²",
-                  "value": 40,
-                }
-              }
             >
               <Select
                 backspaceRemovesValue={true}
@@ -5387,12 +5332,7 @@ exports[`FilterMenu should render correctly 1`] = `
                 styles={Object {}}
                 tabIndex="0"
                 tabSelectsValue={true}
-                value={
-                  Object {
-                    "label": "40 m²",
-                    "value": 40,
-                  }
-                }
+                value={null}
               >
                 <SelectContainer
                   className="filter-dropdown"
@@ -5400,7 +5340,7 @@ exports[`FilterMenu should render correctly 1`] = `
                   cx={[Function]}
                   getStyles={[Function]}
                   getValue={[Function]}
-                  hasValue={true}
+                  hasValue={false}
                   innerProps={
                     Object {
                       "id": undefined,
@@ -5533,10 +5473,7 @@ exports[`FilterMenu should render correctly 1`] = `
                       "styles": Object {},
                       "tabIndex": "0",
                       "tabSelectsValue": true,
-                      "value": Object {
-                        "label": "40 m²",
-                        "value": 40,
-                      },
+                      "value": null,
                     }
                   }
                   setValue={[Function]}
@@ -5594,7 +5531,7 @@ exports[`FilterMenu should render correctly 1`] = `
                         cx={[Function]}
                         getStyles={[Function]}
                         getValue={[Function]}
-                        hasValue={true}
+                        hasValue={false}
                         innerProps={
                           Object {
                             "onMouseDown": [Function],
@@ -5729,10 +5666,7 @@ exports[`FilterMenu should render correctly 1`] = `
                             "styles": Object {},
                             "tabIndex": "0",
                             "tabSelectsValue": true,
-                            "value": Object {
-                              "label": "40 m²",
-                              "value": 40,
-                            },
+                            "value": null,
                           }
                         }
                         setValue={[Function]}
@@ -5807,7 +5741,7 @@ exports[`FilterMenu should render correctly 1`] = `
                               cx={[Function]}
                               getStyles={[Function]}
                               getValue={[Function]}
-                              hasValue={true}
+                              hasValue={false}
                               isDisabled={false}
                               isMulti={false}
                               isRtl={false}
@@ -5933,10 +5867,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                   "styles": Object {},
                                   "tabIndex": "0",
                                   "tabSelectsValue": true,
-                                  "value": Object {
-                                    "label": "40 m²",
-                                    "value": 40,
-                                  },
+                                  "value": null,
                                 }
                               }
                               setValue={[Function]}
@@ -5991,21 +5922,17 @@ exports[`FilterMenu should render correctly 1`] = `
                                 <div
                                   className=" css-g1d714-ValueContainer"
                                 >
-                                  <SingleValue
+                                  <Placeholder
                                     clearValue={[Function]}
                                     cx={[Function]}
-                                    data={
-                                      Object {
-                                        "label": "40 m²",
-                                        "value": 40,
-                                      }
-                                    }
                                     getStyles={[Function]}
                                     getValue={[Function]}
-                                    hasValue={true}
+                                    hasValue={false}
                                     isDisabled={false}
+                                    isFocused={false}
                                     isMulti={false}
                                     isRtl={false}
+                                    key="placeholder"
                                     options={
                                       Array [
                                         Object {
@@ -6128,10 +6055,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "40 m²",
-                                          "value": 40,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     setValue={[Function]}
@@ -6166,33 +6090,29 @@ exports[`FilterMenu should render correctly 1`] = `
                                     }
                                   >
                                     <EmotionCssPropInternal
-                                      __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SingleValue"
+                                      __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
                                       __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
                                       className=""
                                       css={
                                         Object {
                                           "boxSizing": "border-box",
-                                          "color": "hsl(0, 0%, 20%)",
-                                          "label": "singleValue",
+                                          "color": "hsl(0, 0%, 50%)",
+                                          "label": "placeholder",
                                           "marginLeft": 2,
                                           "marginRight": 2,
-                                          "maxWidth": "calc(100% - 8px)",
-                                          "overflow": "hidden",
                                           "position": "absolute",
-                                          "textOverflow": "ellipsis",
                                           "top": "50%",
                                           "transform": "translateY(-50%)",
-                                          "whiteSpace": "nowrap",
                                         }
                                       }
                                     >
                                       <div
-                                        className=" css-1uccc91-singleValue"
+                                        className=" css-1wa3eu0-placeholder"
                                       >
-                                        40 m²
+                                        Tamaño maximo
                                       </div>
                                     </EmotionCssPropInternal>
-                                  </SingleValue>
+                                  </Placeholder>
                                   <Input
                                     aria-autocomplete="list"
                                     autoCapitalize="none"
@@ -6288,10 +6208,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "40 m²",
-                                          "value": 40,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     spellCheck="false"
@@ -6439,7 +6356,7 @@ exports[`FilterMenu should render correctly 1`] = `
                               cx={[Function]}
                               getStyles={[Function]}
                               getValue={[Function]}
-                              hasValue={true}
+                              hasValue={false}
                               isDisabled={false}
                               isMulti={false}
                               isRtl={false}
@@ -6565,10 +6482,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                   "styles": Object {},
                                   "tabIndex": "0",
                                   "tabSelectsValue": true,
-                                  "value": Object {
-                                    "label": "40 m²",
-                                    "value": 40,
-                                  },
+                                  "value": null,
                                 }
                               }
                               setValue={[Function]}
@@ -6624,7 +6538,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                     cx={[Function]}
                                     getStyles={[Function]}
                                     getValue={[Function]}
-                                    hasValue={true}
+                                    hasValue={false}
                                     isDisabled={false}
                                     isFocused={false}
                                     isMulti={false}
@@ -6751,10 +6665,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "40 m²",
-                                          "value": 40,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     setValue={[Function]}
@@ -6814,7 +6725,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                     cx={[Function]}
                                     getStyles={[Function]}
                                     getValue={[Function]}
-                                    hasValue={true}
+                                    hasValue={false}
                                     innerProps={
                                       Object {
                                         "aria-hidden": "true",
@@ -6948,10 +6859,7 @@ exports[`FilterMenu should render correctly 1`] = `
                                         "styles": Object {},
                                         "tabIndex": "0",
                                         "tabSelectsValue": true,
-                                        "value": Object {
-                                          "label": "40 m²",
-                                          "value": 40,
-                                        },
+                                        "value": null,
                                       }
                                     }
                                     setValue={[Function]}
@@ -7076,7 +6984,7 @@ exports[`FilterMenu should render correctly 1`] = `
           className="nrooms-list"
         >
           <li
-            className=""
+            className="selected"
             key="0"
             onClick={[Function]}
           >
@@ -7097,7 +7005,7 @@ exports[`FilterMenu should render correctly 1`] = `
             2+
           </li>
           <li
-            className="selected"
+            className=""
             key="3"
             onClick={[Function]}
           >
