@@ -25,7 +25,8 @@ const l = {
 
 export const ListingsInitialState = {
     listings : [] as Listing[],
-    nextPage: 0 as number
+    nextPage: 0 as number,
+    scrollPosition: 0 as number
 }
 
 type ListingsStateType = typeof ListingsInitialState;
@@ -40,7 +41,8 @@ export const ListingsReducer = (state: ListingsStateType = ListingsInitialState,
         case SET_LISTINGS:
             return Object.assign({}, state, {
                 listings: [...action.payload],
-                nextPage: 1
+                nextPage: 1,
+                scrollPosition: 0
             })
         default:
             return state;

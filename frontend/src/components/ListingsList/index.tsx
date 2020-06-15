@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 import BathroomIcon from "./icons/bathroom.svg";
 import BedroomIcon from "./icons/bedroom.svg";
@@ -56,13 +56,21 @@ const ListingItem = (props : ListingItemProps) => {
 
 
 type ListingListProps = {
-    listings: ListingItemProps[]
+    listings: ListingItemProps[],
+    scrollPosition: number
 }
 
 export default function ListingsList(props : ListingListProps){
-    const {listings} = props;
+    const {listings, scrollPosition} = props;
+    const listRef = useRef<HTMLDivElement>()
+
+    useEffect(()=>{
+        console.log("Scrolling element", listRef.current.scrollTop)
+        listRef.current.scrollTop = scrollPosition
+    }, [listings])
+
     return (
-        <div className="listing-list">
+        <div className="listing-list" ref={listRef}>
         {
             listings.map((l, i) => (
                                 <ListingItem
