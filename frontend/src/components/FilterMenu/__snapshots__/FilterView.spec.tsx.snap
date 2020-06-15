@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterView should render correctly 1`] = `
+<div
+  className="filter-view-container"
+>
+  <div
+    className="filter-row"
+  >
+    <div
+      className="filter-title"
+    >
+      PRECIO
+    </div>
+    <div
+      className="filter-min-max"
+    >
+      <StateManager
+        className="filter-dropdown"
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "price 1",
+              "value": 1,
+            },
+          ]
+        }
+        placeholder="Precio minimo"
+        value={null}
+      />
+      <StateManager
+        className="filter-dropdown"
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "price 1",
+              "value": 1,
+            },
+          ]
+        }
+        placeholder="Precio maximo"
+        value={null}
+      />
+    </div>
+  </div>
+  <div
+    className="filter-row"
+  >
+    <div
+      className="filter-title"
+    >
+      TAMAÑO
+    </div>
+    <div
+      className="filter-min-max"
+    >
+      <StateManager
+        className="filter-dropdown"
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "size 1",
+              "value": 1,
+            },
+          ]
+        }
+        placeholder="Tamaño minimo"
+        value={null}
+      />
+      <StateManager
+        className="filter-dropdown"
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "size 1",
+              "value": 1,
+            },
+          ]
+        }
+        placeholder="Tamaño maximo"
+        value={null}
+      />
+    </div>
+  </div>
+  <div
+    className="filter-row"
+  >
+    <div
+      className="filter-title"
+    >
+      HABITACIONES
+    </div>
+  </div>
+  <ol
+    className="nrooms-list"
+  >
+    <li
+      className="selected"
+      key="1"
+      onClick={[Function]}
+    >
+      room 1
+    </li>
+  </ol>
+  <div
+    className="see-listings"
+    onClick={[Function]}
+  >
+    VER INMUEBLES
+  </div>
+</div>
+`;
