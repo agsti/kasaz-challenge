@@ -29,7 +29,6 @@ export const ListingsReducer = (state: ListingsStateType = ListingsInitialState,
             return Object.assign({}, state, {
                 listings: [...action.payload],
                 nextPage: 1,
-                scrollPosition: 0
             })
         case SET_SCROLL_POSITION:
             return Object.assign({}, state, {

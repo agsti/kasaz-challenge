@@ -11,8 +11,8 @@ import { SelectListingsState } from "./redux/Listings/selectors";
 
 import "./App.css";
 import 'reset-css';
-import { GetNewListings, GetMoreListings } from "./redux/Listings/thunks";
-import { SetScrollPosition } from "./redux/Listings/actions";
+import { GetNewListings } from "./redux/Listings/thunks";
+
 
 
 const App = () => {
@@ -31,15 +31,7 @@ const App = () => {
             <SearchBar />
             <div className="main-container">
                <FilterView />
-                <ListingsList
-                    listings = {listingsState.listings}
-                    scrollPosition={listingsState.scrollPosition}
-                    onEndOfScroll={(scrollPos) => {
-                        dispatch(SetScrollPosition(scrollPos))
-                        dispatch(GetMoreListings())
-                        
-                    }}
-                />
+                <ListingsList />
 	        </div>
 
         </div>
