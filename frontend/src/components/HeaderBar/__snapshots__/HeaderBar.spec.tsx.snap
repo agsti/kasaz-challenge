@@ -7,15 +7,16 @@ exports[`HeaderBar should render correctly 1`] = `
   <span
     className="header-item"
   >
-    <svgrLoader
-      fill="#41af68"
+    <img
+      src={[Function]}
     />
   </span>
   <span
     className="header-item"
   >
-    <svgrLoader
+    <img
       className="kasaz-logo"
+      src={[Function]}
     />
   </span>
   <div

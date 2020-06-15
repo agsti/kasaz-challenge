@@ -23,7 +23,7 @@ export const ListingsReducer = (state: ListingsStateType = ListingsInitialState,
         case ADD_LISTINGS:
             return Object.assign({}, state, {
                 listings: [...state.listings, ...action.payload],
-                nextPage: state.nextPage + 1
+                nextPage: state.nextPage + (action.payload && action.payload.length > 0? 1: 0)
             })
         case SET_LISTINGS:
             return Object.assign({}, state, {
