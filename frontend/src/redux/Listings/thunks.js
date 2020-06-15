@@ -6,7 +6,7 @@ const mapApiToFE = (apiReponse) =>{
     return {
         title: apiReponse.Title,
         price: apiReponse.Price,
-        priceSqm: 3.21,
+        priceSqm: apiReponse.Price / apiReponse.AreaSqm,
         sqm: apiReponse.AreaSqm,
         nRooms: apiReponse.NRooms,
         nBath: apiReponse.NBathrooms,

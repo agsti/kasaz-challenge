@@ -28,7 +28,7 @@ const ListingItem = (props : ListingItemProps) => {
                         {price.toLocaleString()} €
                      </div>
                     <div className="listing-price-sqm">
-                        {priceSqm} €/m²
+                        {priceSqm.toFixed(0)} €/m²
                      </div>
                 </div>
             </div>
