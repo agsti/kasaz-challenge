@@ -34,8 +34,14 @@
     padding: 0 10%;
 }
 
+
 .filter-dropdown {
     width: 170px;
+}
+
+.validation-err {
+    border: solid lightpink 3px;
+    border-radius: 10px;
 }
 
 .filter-title {

@@ -144,6 +144,12 @@ exports[`FilterMenu should render correctly 1`] = `
           },
         ]
       }
+      validation={
+        Object {
+          "pricesErr": false,
+          "sizesErr": false,
+        }
+      }
       visible={true}
     >
       <div

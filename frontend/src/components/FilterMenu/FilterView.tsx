@@ -27,6 +27,10 @@ type FilterViewProps = {
 		maxSizeSqm?: OptionsValue,
 		minRooms: OptionsValue,
 	}
+    validation: {
+        pricesErr: boolean,
+        sizesErr: boolean
+    }
 }
 
 export default function FilterView(props: FilterViewProps) {
@@ -38,7 +42,8 @@ export default function FilterView(props: FilterViewProps) {
 		callbacks,
 		filterValues,
 		onClickSeeListings,
-		enableSeeListings
+		enableSeeListings,
+        validation
 	} = props;
 
 	const {
@@ -49,9 +54,16 @@ export default function FilterView(props: FilterViewProps) {
 		minRooms
 	} = filterValues;
 	
+    const {
+        pricesErr,
+        sizesErr
+    } = validation;
+
+    const seeListingsAvaiable = enableSeeListings && !pricesErr && !sizesErr
 	const onSeeListingsClickHandler = ()=> {
-		enableSeeListings && onClickSeeListings()
+		seeListingsAvaiable && onClickSeeListings()
 	}
+
 
     return (
         <div className={visible?"filter-view-container" : "filter-view-container hidden"}>
@@ -61,7 +73,7 @@ export default function FilterView(props: FilterViewProps) {
             </div>
                 <div className="filter-min-max">
               <Select
-					  className="filter-dropdown"
+					  className={pricesErr?"filter-dropdown validation-err":"filter-dropdown"}
 					  placeholder="Precio minimo"
 					value={minPrice}
 					onChange={(v:OptionsValue) => callbacks.minPrice(v.value || null)}
@@ -69,7 +81,7 @@ export default function FilterView(props: FilterViewProps) {
 				  />
 		
               <Select
-					  className="filter-dropdown"
+					  className={pricesErr?"filter-dropdown validation-err":"filter-dropdown"}
 					  placeholder="Precio maximo"
 					value={maxPrice}
 					onChange={(v:OptionsValue) => callbacks.maxPrice(v.value || null)}
@@ -85,7 +97,7 @@ export default function FilterView(props: FilterViewProps) {
 
                 <div className="filter-min-max">
               <Select
-					  className="filter-dropdown"
+					  className={sizesErr?"filter-dropdown validation-err":"filter-dropdown"}
 					  placeholder="Tamaño minimo"
 					value={minSizeSqm}
 					onChange={(v:OptionsValue) => callbacks.minSizeSqm(v.value || null)}
@@ -93,7 +105,7 @@ export default function FilterView(props: FilterViewProps) {
 				  />
 					
               <Select
-					  className="filter-dropdown"
+					  className={sizesErr?"filter-dropdown validation-err":"filter-dropdown"}
 					  placeholder="Tamaño maximo"
 					value={maxSizeSqm}
 					onChange={(v:OptionsValue) => callbacks.maxSizeSqm(v.value || null)}
@@ -123,7 +135,7 @@ export default function FilterView(props: FilterViewProps) {
                         ))
                     }
                 </ol>
-			<div className={enableSeeListings?"see-listings":"see-listings disabled"} onClick={onSeeListingsClickHandler}>
+			<div className={seeListingsAvaiable?"see-listings":"see-listings disabled"} onClick={onSeeListingsClickHandler}>
 				VER INMUEBLES
 			</div>
         </div>

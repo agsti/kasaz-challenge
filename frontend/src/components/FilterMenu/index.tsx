@@ -9,6 +9,7 @@ import {ToggleFilterMenu} from "../../redux/Menus/actions";
 import {SelectMenuState} from "../../redux/Menus/selectors";
 import { GetNewListings } from "../../redux/Listings/thunks";
 import { SetScrollPosition } from "../../redux/Listings/actions";
+import {isSizesOk, isPricesOk} from "./validations";
 
 const MapValueToOptions = (sufix:string, overrides?:{ [key:string]:string; }) => 
             (v:any ) : OptionsValue => ({value:v, label: overrides && v in overrides ? overrides[v] :`${v.toLocaleString()}${sufix}`})
@@ -54,7 +55,7 @@ export default function FilterMenu(){
     const menuData = useSelector(SelectMenuState);
     const dispatch = useDispatch();
 
-    let filterValues= {
+    const filterValues= {
         minPrice: FindOption(filterData.minPrice, FilterPrices), 
         maxPrice: FindOption(filterData.maxPrice, FilterPrices),
         minSizeSqm: FindOption(filterData.minSize, FilterSizes),
@@ -63,7 +64,7 @@ export default function FilterMenu(){
     }
 
 
-    let callbacks = {
+    const callbacks = {
         minPrice: (v : number) =>{
             dispatch(FilterActions.SetMinPrice(v))
             !filterData.outOfSync && dispatch(FilterActions.SetFilterOufOfSync(true))
@@ -87,12 +88,14 @@ export default function FilterMenu(){
     }
 
     const onClickSeeListings = () => {
-        dispatch(GetNewListings())
         dispatch(SetScrollPosition(0))
         dispatch(FilterActions.SetFilterOufOfSync(false))
         dispatch(ToggleFilterMenu())
+        dispatch(GetNewListings())
     }
 
+    const pricesErr = !isPricesOk(filterData.minPrice, filterData.maxPrice)
+    const sizesErr = !isSizesOk(filterData.minSize, filterData.maxSize)
     return <FilterMenuView
         visible={menuData.showFilterMenu}
         prices={FilterPrices}
@@ -102,6 +105,7 @@ export default function FilterMenu(){
         filterValues={filterValues}
         callbacks={callbacks}
         onClickSeeListings={onClickSeeListings}
+        validation={{pricesErr, sizesErr}}
    />
 
 }

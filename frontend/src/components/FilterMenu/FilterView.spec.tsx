@@ -37,6 +37,10 @@ describe('FilterView', () => {
             maxSizeSqm : null,
             minRooms: {value: 1, label:"room 1"},
         }}
+        validation={{
+            sizesErr : false, 
+            pricesErr : false
+        }}
        />);
   
     expect(component).toMatchSnapshot();

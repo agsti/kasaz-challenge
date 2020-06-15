@@ -14,8 +14,9 @@ export default function ListingListView(props: ListingListProps) {
     const listRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
+        console.log("Updating scroll position",scrollPosition)
         listRef.current.scrollTop = scrollPosition
-    }, [scrollPosition])
+    }, [listings && listings[0]])
 
     const handleOnScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
         let element = e.currentTarget

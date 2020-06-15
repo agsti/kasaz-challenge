@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { SelectListingsState } from "../../redux/Listings/selectors";
 
 import { GetMoreListings } from "../../redux/Listings/thunks";
-import { SetScrollPosition } from "../../redux/Listings/actions";
 
 export default function ListingsList(){
 
@@ -17,7 +16,6 @@ export default function ListingsList(){
         listings = {listingsState.listings}
         scrollPosition={listingsState.scrollPosition}
         onScroll={(scrollPos, isEnd) => {
-            dispatch(SetScrollPosition(scrollPos))
             if (isEnd){
                 dispatch(GetMoreListings())
             }
