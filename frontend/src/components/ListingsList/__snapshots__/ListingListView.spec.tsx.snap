@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingListView should render correctly 1`] = `
+<ListingListView
+  listings={
+    Array [
+      Object {
+        "nBath": 1,
+        "nRooms": 2,
+        "picture": "/img.jpg",
+        "price": 1000000,
+        "priceSqm": 312.12,
+        "sqm": 500,
+        "title": "title",
+      },
+    ]
+  }
+  onScroll={[MockFunction]}
+  scrollPosition={500}
+>
+  <div
+    className="listing-list"
+    onScroll={[Function]}
+  >
+    <ListingItem
+      key="0"
+      nBath={1}
+      nRooms={2}
+      picture="/img.jpg"
+      price={1000000}
+      priceSqm={312.12}
+      sqm={500}
+      title="title"
+    >
+      <div
+        className="listing-container"
+      >
+        <div
+          className="listing-image-price"
+        >
+          <img
+            src="/img.jpg"
+          />
+          <div
+            className="listing-prices"
+          >
+            <div
+              className="listing-price"
+            >
+              1,000,000
+               €
+            </div>
+            <div
+              className="listing-price-sqm"
+            >
+              312
+               €/m²
+            </div>
+          </div>
+        </div>
+        <div
+          className="listing-title"
+        >
+          title
+        </div>
+        <div
+          className="listing-info-container"
+        >
+          <div
+            className="listing-info"
+          >
+            <img
+              src=""
+            />
+            500
+             m²
+          </div>
+          <div
+            className="listing-info"
+          >
+            <img
+              src=""
+            />
+            2
+             habs.
+          </div>
+          <div
+            className="listing-info"
+          >
+            <img
+              src=""
+            />
+            1
+             baños
+          </div>
+        </div>
+      </div>
+    </ListingItem>
+  </div>
+</ListingListView>
+`;

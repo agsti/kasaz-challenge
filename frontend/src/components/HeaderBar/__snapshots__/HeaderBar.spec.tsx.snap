@@ -8,7 +8,7 @@ exports[`HeaderBar should render correctly 1`] = `
     className="header-item"
   >
     <img
-      src={[Function]}
+      src=""
     />
   </span>
   <span
@@ -16,7 +16,7 @@ exports[`HeaderBar should render correctly 1`] = `
   >
     <img
       className="kasaz-logo"
-      src={[Function]}
+      src=""
     />
   </span>
   <div
